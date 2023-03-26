@@ -188,11 +188,15 @@ function food() {
     const modal_container = document.getElementById("modal_container");
     modal_container.classList.remove("hide");
     modal_container.classList.add("modal-container");
+    pTag = document.createElement("p");
+    pTag.innerHTML = warning_messages["beverage"];
+    modal_container.appendChild(pTag);
+
 
     const close = document.getElementById("close");
     close.addEventListener("click", () => {
         modal_container.classList.add("hide");
-        subtractWallet();
+        subtractBeverageFromWallet();
     });
     // closeButton();
 
@@ -297,6 +301,18 @@ function addFood(e) {
 
 // update menu to display dessert choices
 function dessert() {
+    const modal_container = document.getElementById("modal_container");
+    modal_container.classList.remove("hide");
+    modal_container.classList.add("modal-container");
+
+    const close = document.getElementById("close");
+    close.addEventListener("click", () => {
+        modal_container.classList.add("hide");
+        subtractFoodFromWallet();
+    });
+    // closeButton();
+
+
     menu = document.getElementById('menu-title')
     menu.innerHTML = "Select your dessert"
 
@@ -366,7 +382,8 @@ function addDessert(e) {
         next.innerHTML = "Next"
         next.classList.add("next")
         order.appendChild(next)
-        // next.addEventListener("click", dessert)
+        next.addEventListener("click", finalNext())
+        
     }
     
     console.log("my array", beverageOrder)
@@ -396,6 +413,22 @@ function addDessert(e) {
 
 
 
+function finalNext () {
+    const modal_container = document.getElementById("modal_container");
+    modal_container.classList.remove("hide");
+    modal_container.classList.add("modal-container");
+
+    const close = document.getElementById("close");
+    close.addEventListener("click", () => {
+        modal_container.classList.add("hide");
+        subtractDessertFromWallet();
+    });
+    // closeButton();
+}
+
+
+
+
 // Start Order Redirect Button
 function enterOrderPage () {
     console.log("Leaving home page, and redirecting to order page.");
@@ -409,6 +442,14 @@ var wallet = 2000;
 // document.getElementById('co2-deplete-wallet-button').addEventListener('click', function () {
 //     subtractWallet();
 // });
+
+
+const warning_messages = {
+    "beverage": "Did you know almond milk uses more fresh water than oat milk (one liter of almond milk uses approximately 7x more fresh water than one liter of oatmilk)? <br> <br> These two might seem similar but they have different effects on the environment.  <br> <br> Also, coffee is responsible for 1/3 of land use and considering total production usage, approximately 39 gallons of water are needed to make one single cup of coffee (coffee has the biggest carbon footprint per 1000kcal, followed by beef)!",
+    "food": "As much as you love cheese, it accounts for 1/3 of fresh water usage per 1000 Kcal!. Farmed fish is the top product responsible for fresh water usage in litres per 1000 Kcal of food. Healthier doesn't always mean more eco-friendly. <br> <br> Animal based foods produce around 50% more emissions than plant based foods like potatoes, apples, groundnuts.",
+    "dessert": "Are you a fan of chocolate? Did you know that dark chocolate has the largest carbon footprint in terms of nutritional values (per 100g protein)? <br> <br> More than 50% of the emissions via land use are shared by beef and dark chocolate. It's a huge contributor in terms of land usage! <br> In general, emissions via transport are uniform across different foods. Cane sugar, however, has the highest share!"
+}
+
 
 const co2Emissions = {
     "coffee": 282, 
@@ -429,12 +470,8 @@ const co2Emissions = {
     "donut": 386
 };
 
-function subtractWallet () {
-    // fetch("./data/co2_emissions.json")
-    // .then(response => {
-    //     return response.json();
-    // })
-    // .then(data => console.log(data));
+
+function subtractBeverageFromWallet () {
     console.log(co2Emissions);
     console.log(beverageOrder);
     beverageOrder.forEach(foodItem => {
@@ -442,9 +479,68 @@ function subtractWallet () {
         wallet = wallet - co2Emissions[foodItem];
         var results = document.getElementById('co2counter');
         results.innerHTML = 'eCO<sub>2</sub> Wallet: ' + wallet;
-    });
-    // });
-}
+    })
+};
+
+
+function subtractFoodFromWallet () {
+    console.log("###LAST ELEMENT", beverageOrder.slice(-1));
+    console.log("WALLET 0: ", wallet);
+    otherFoodItem = beverageOrder.slice(-1);
+    console.log(co2Emissions[otherFoodItem]);
+    console.log("else beverageOrder: ", beverageOrder);
+    console.log("WALLET 1: ", wallet);
+    wallet -= co2Emissions[otherFoodItem];
+    console.log("WALLET 2: ", wallet);
+    var results = document.getElementById('co2counter');
+    results.innerHTML = 'eCO<sub>2</sub> Wallet: ' + wallet;
+};
+
+
+function subtractDessertFromWallet () {
+    console.log("###LAST ELEMENT", beverageOrder.slice(-1));
+    console.log("WALLET 0: ", wallet);
+    otherFoodItem = beverageOrder.slice(-1);
+    console.log(co2Emissions[otherFoodItem]);
+    console.log("else beverageOrder: ", beverageOrder);
+    console.log("WALLET 1: ", wallet);
+    wallet -= co2Emissions[otherFoodItem];
+    console.log("WALLET 2: ", wallet);
+    var results = document.getElementById('co2counter');
+    results.innerHTML = 'eCO<sub>2</sub> Wallet: ' + wallet;
+};
+
+
+// function subtractWallet () {
+//     // fetch("./data/co2_emissions.json")
+//     // .then(response => {
+//     //     return response.json();
+//     // })
+//     // .then(data => console.log(data));
+//     console.log(co2Emissions);
+//     console.log(beverageOrder);
+//     if (beverageOrder.length === 3) {
+//         beverageOrder.forEach(foodItem => {
+//             console.log(co2Emissions[foodItem]);
+//             wallet = wallet - co2Emissions[foodItem];
+//             var results = document.getElementById('co2counter');
+//             results.innerHTML = 'eCO<sub>2</sub> Wallet: ' + wallet;
+//         })
+//     } else {
+//         console.log("###LAST ELEMENT", beverageOrder.slice(-1));
+//         console.log("WALLET 0: ", wallet);
+//         otherFoodItem = beverageOrder.slice(-1);
+//         console.log(co2Emissions[otherFoodItem]);
+//         console.log("else beverageOrder: ", beverageOrder);
+//         console.log("WALLET 1: ", wallet);
+//         wallet -= co2Emissions[otherFoodItem];
+//         console.log("WALLET 2: ", wallet);
+//         var results = document.getElementById('co2counter');
+//         results.innerHTML = 'eCO<sub>2</sub> Wallet: ' + wallet;
+//     }
+    
+//     // });
+// };
 
 
 // Results Redirect Button
