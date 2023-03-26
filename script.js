@@ -185,6 +185,17 @@ function bevResult(e) {
 
 // update menu to display food choices
 function food() {
+    const modal_container = document.getElementById("modal_container");
+    modal_container.classList.remove("hide");
+    modal_container.classList.add("modal-container");
+
+    const close = document.getElementById("close");
+    close.addEventListener("click", () => {
+        modal_container.classList.add("hide");
+        subtractWallet();
+    });
+    // closeButton();
+
     menu = document.getElementById('menu-title')
     menu.innerHTML = "Select your food"
 
@@ -395,14 +406,21 @@ function enterOrderPage () {
 // Subtract from Wallet Functionality
 var wallet = 2000;
 
-document.getElementById('co2-deplete-wallet-button').addEventListener('click', function () {
-    subtractWallet();
-});
+// document.getElementById('co2-deplete-wallet-button').addEventListener('click', function () {
+//     subtractWallet();
+// });
 
 function subtractWallet () {
+    // fetch("./data/co2_emissions.json")
+    // .then(response => {
+    //     return response.json();
+    // })
+    // .then(data => console.log(data));
+    console.log(beverageOrder);
     wallet--;
     var results = document.getElementById('co2counter');
     results.innerHTML = 'eCO<sub>2</sub> Wallet: ' + wallet;
+    // });
 }
 
 
@@ -416,25 +434,25 @@ function enterResultsPage () {
 
 // NEW CODE FOR POPUP
 // load in data
-fetch("./data/co2_emissions.json")
-.then(response => {
-   return response.json();
-})
-.then(data => console.log(data));
+// fetch("./data/co2_emissions.json")
+// .then(response => {
+//    return response.json();
+// })
+// .then(data => console.log(data));
 
 
 const open = document.getElementById("open");
-const modal_container = document.getElementById("modal-container");
-const close = document.getElementById("close");
+// const modal_container = document.getElementById("modal_container");
+// const close = document.getElementById("close");
 
-open.addEventListener("click", () => {
-    modal_container.classList.remove("model-container");
-    modal_container.classList.add("hide");
-});
+// open.addEventListener("click", () => {
+//     modal_container.classList.remove("hide");
+//     modal_container.classList.add("modal-container");
+// });
 
-function closeButton() {
-    console.log("TEST")
-    close.addEventListener("click", () => {
-    modal_container.classList.add("hide");
-});
-}
+// function closeButton() {
+//     console.log("TEST")
+//     close.addEventListener("click", () => {
+//     modal_container.classList.add("hide");
+// });
+// }
