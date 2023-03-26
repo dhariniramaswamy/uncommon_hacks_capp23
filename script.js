@@ -410,16 +410,39 @@ var wallet = 2000;
 //     subtractWallet();
 // });
 
+const co2Emissions = {
+    "coffee": 282, 
+    "water": 0, 
+    "tea": 242, 
+    "hot chocolate": 1091, 
+    "honey": 17,
+    "stevia": 2.7, 
+    "cane sugar": 3, 
+    "oat milk": 71, 
+    "almond milk": 113,
+    "cow milk": 352, 
+    "bagel sandwich": 1181, 
+    "grilled cheese": 361, 
+    "roast beef sandwich": 7294, 
+    "chocolate cheesecake": 658,
+    "brownie": 125, 
+    "donut": 386
+};
+
 function subtractWallet () {
     // fetch("./data/co2_emissions.json")
     // .then(response => {
     //     return response.json();
     // })
     // .then(data => console.log(data));
+    console.log(co2Emissions);
     console.log(beverageOrder);
-    wallet--;
-    var results = document.getElementById('co2counter');
-    results.innerHTML = 'eCO<sub>2</sub> Wallet: ' + wallet;
+    beverageOrder.forEach(foodItem => {
+        console.log(co2Emissions[foodItem]);
+        wallet = wallet - co2Emissions[foodItem];
+        var results = document.getElementById('co2counter');
+        results.innerHTML = 'eCO<sub>2</sub> Wallet: ' + wallet;
+    });
     // });
 }
 
