@@ -5,10 +5,13 @@
 </head>
 
 <body>
-  <!--Footer-->
+  <!--Header-->
   <header>
     <nav class="navbar">
       <a class="nav-branding" href="#">LOW CARB CAFE</a>
+      <div id="co2counter" class="co2counter">
+        eCO<sub>2</sub> Wallet: 2000
+      </div>
       <ul class="nav-menu">
         <li class="nav-item">
           <a class="nav-link" href="#">Beverages</a>
@@ -32,21 +35,28 @@
 
 
   <!--Main layout-->
-  <main class="content column-page" id="quarto-document-content"> 
-    <h1>Select Your Beverage</h1>
-      <h3 id="results">
-      <div class="grid-container">
-        <div class="grid-item item-1">
-          1 <img src="#"/>
-        </div>
-        <div class="grid-item item-4">
-          4 <img src="images/kk-geo.png"/>
-        </div>
-        <div class="grid-item item-7">
-          7 <img src="images/kk-mirror.png"/>
-        </div>
+  <main class="content column-page" id="parent"> 
+    <div class="grid-container" id="grid">
+      <h1 id="menu-title">Select Your Beverage</h1>
+      <div class="grid-item" id="item-1">
+        Black coffee <img id="item1-image" class="black-coffee" class="pic" src="https://static.vecteezy.com/system/resources/previews/009/307/068/original/black-coffee-in-a-cup-on-transparent-background-file-png.png"/>
       </div>
+      <div class="grid-item" id="item-2">
+        Hot chocolate<img id="item2-image" class="chocolate" class="pic" src="https://images.pngnice.com/download/2007/Hot-Chocolate-PNG-Photo.png"/>
+      </div>
+      <div class="grid-item" id="item-3">
+        Tea <img id="item3-image" class="tea" class="pic" src="https://www.pngall.com/wp-content/uploads/2016/04/Tea-Transparent.png"/>
+      </div>
+    </div>
+    <div id="cafe-indoors">
+      <img id="cafe" src="https://jeffszuc.com/static/ee8de2f13592971e90291abfef81f83e/36dbb/sketchbook-trumansburg_gimme_coffee.jpg">
+      <div id="order">
+        <h1>Your order</h1>
+        <button type="button" id="co2-deplete-wallet-button">Click to confirm purchase (and subtract from wallet).</button>
+      </div>
+    </div>
   </main>
+
 
   <!--Footer-->
   <footer class="footer">
@@ -73,7 +83,6 @@
       </div>
     </div>
   </footer>
-  <!--Footer-->
 </body>
 
 <script type="text/javascript" src="script.js"></script>

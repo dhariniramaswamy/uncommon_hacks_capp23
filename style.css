@@ -11,7 +11,7 @@ html, body, header, #intro {
 }
 
 header {
-    background: url("https://cdn.pixabay.com/photo/2016/04/12/11/19/coffee-1324126_960_720.jpg") no-repeat center center fixed;
+    background: url("https://cdn.pixabay.com/photo/2017/12/29/18/36/coffee-3048275_960_720.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -21,40 +21,59 @@ header {
 }
 
 main {
-    background-color: tan;    
+    background-color: white;    
     color: white;
 }
 
-
-.typewriter h2 {
-    color: #000000;
-    font-family: Courier;
-    overflow: hidden;
-        overflow-x: hidden;
-        overflow-y: hidden;
-    border-right: 0.15em solid orange;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation: typing 3.5s steps(30, end), blink-caret .5s step-end infinite;
-        animation-duration: 3.5s, 0.5s;
-        animation-timing-function: steps(30), step-end;
-        animation-delay: 0s, 0s;
-        animation-iteration-count: 1, infinite;
-        animation-direction: normal, normal;
-        animation-fill-mode: none, none;
-        animation-play-state: running, running;
-        animation-name: typing, blink-caret;
+.home {
+    background: url("https://cdn.pixabay.com/photo/2020/06/04/13/55/coffee-cup-5258877_960_720.jpg") no-repeat center center fixed;
+    background-color: tan;
+    background-size: cover;
+    height: 100%;
+    color: white;
+    text-align: center;
+    font-size: xx-large;
 }
 
-img {
-    max-width: 100%;
-    max-height: 100%;
-    height: auto;
-    width: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.sign {
+    color: white;
+    border-bottom: none;
+    position: absolute;
+    margin: auto;
+    top: 0; bottom: 0; left: 0; right: 0;
+    height: 400px;
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.startbutton {
+    background-color: white;
+    border: none;
+    color: tan;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 250px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.buttoncontainer :hover {
+    background: rgb(111, 78, 55);
+    color: tan;
+}
+
+.co2counter {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 li {
@@ -83,6 +102,7 @@ a {
 
 .nav-branding {
     font-size: 2rem;
+    font-weight: bold;
 }
 
 .nav-link {
@@ -197,68 +217,23 @@ a {
 .grid-container {
     display: grid;
     gap: 5px;
-    background-color: #2196F3;
+    background-color: #6E6362;
     padding: 5px;
     grid-auto-columns: minmax(min-content, auto);
     
 }
 
 .grid-item {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #394053;
     text-align: center;
     padding: 0px;
     font-size: 30px;
 }
 
-.item-1 {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.item-2 {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.item-3 {
-    grid-column: 3;
-    grid-row: 1;
-}
-
-.item-4 {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.item-5 {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-.item-6 {
-    grid-column: 3;
-    grid-row: 2;
-}
-
-.item-7 {
-    grid-column: 1;
-    grid-row: 3;
-}
-
-.item-8 {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-.item-9 {
-    grid-column: 3;
-    grid-row: 3;
-}
-
 
 footer {
     display: block;
-    background: url("https://cdn.pixabay.com/photo/2016/04/12/11/19/coffee-1324126_960_720.jpg") no-repeat center center fixed;
+    background: url("https://cdn.pixabay.com/photo/2017/12/29/18/36/coffee-3048275_960_720.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -278,41 +253,57 @@ footer {
     gap: 25px;
 }
 
-/*
-html {
-    font-family: Arial, sans-serif;
-    width: 960px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-body {
-    background: url("https://www.artic.edu/iiif/2/3ee54063-9d78-ee86-0103-b477d988a93f/full/843,/0/default.jpg");
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-position: stretch;
-    background-repeat: no-repeat;
-}
-*/
-
-/*
-img {
-    float: right;
-    width: 200px;
-    height: 200px;
-}
-*/
 h1 {
     border-bottom: 3px solid gray;
     font-weight: bold; 
-    color:#2196F3;
+    color:#f6f6f6;
+    font-size: 28px;
 }
 
 h2 {
     border-bottom: 3px solid gray;
     font-weight: bold; 
     color:#2196F3;
+}
+
+#parent{
+    display:flex;
+}
+
+#grid{
+    flex-basis:15%;
+}
+
+#cafe-indoors{
+    display:flex;
+    flex-basis:95%;
+    background-color: #6E6362;
+    object-fit: fill;
+}
+
+#cafe-indoors img{
+    /* width:900px; */
+    text-align: center;
+}
+
+.grid-item img{
+    width: 140px;
+    height: 120px;
+    /* background-color: white; */
+}
+
+.pic{
+    width: 140px;
+    height: 120px;
+
+}
+#order{
+    flex-basis:20%;
+}
+
+.next{
+    background-color: green;
+    font-size: 30px;
+    color: white;
+    padding:0.3em;
 }
