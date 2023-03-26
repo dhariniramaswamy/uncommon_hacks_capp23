@@ -188,29 +188,10 @@ function food() {
     menu = document.getElementById('menu-title')
     menu.innerHTML = "Select your food"
 
-    // empty order section and reinsert order title
-    order.innerHTML = ''
-    orderTitle = document.createElement('h1')
-    orderTitle.innerHTML = "Your order"
-    order.appendChild(orderTitle)
-    
-    // include beverage in order section
-    console.log("----------", beverageOrder)
-    const firstOrder = document.createElement('img')
-    if (beverageOrder[0] == "coffee"){
-        console.log("YEEEEE")
-        firstOrder.src = "https://static.vecteezy.com/system/resources/previews/009/307/068/original/black-coffee-in-a-cup-on-transparent-background-file-png.png"
-        firstOrder.classList.add("pic")
-        order.appendChild(firstOrder)
-    } else if (beverageOrder[0] == "hot chocolate"){
-        firstOrder.src = "https://images.pngnice.com/download/2007/Hot-Chocolate-PNG-Photo.png"
-        firstOrder.classList.add("pic")
-        order.appendChild(firstOrder)
-    } else if (beverageOrder[0] == "tea"){
-        firstOrder.src = "https://www.pngall.com/wp-content/uploads/2016/04/Tea-Transparent.png" 
-            firstOrder.classList.add("pic")
-            order.appendChild(firstOrder)
-    }
+    order = document.getElementById('order')
+    let children = order.children
+    console.log("CHILDREN", children[4])
+    children[4].remove()
 
     // render food options
     const item1 = document.getElementById('item-1')
@@ -238,37 +219,169 @@ function food() {
     item3.appendChild(cheese);
 }
 
+// add food selection to order section
 function addFood(e) {
     selection = e.target.className
     console.log("my selection", selection)
     order = document.getElementById('order')
-    
-    if (selection !== ""){
-        const firstOrder = document.createElement('img')
-        if (selection == "bagel"){
-            firstOrder.src = "https://cutewallpaper.org/24/bagel-png/full-bagel-breakfast-and-lunch-menus-nyack-hot-bagels.png"
-            firstOrder.classList.add("pic")
-            order.appendChild(firstOrder)
-            beverageOrder.push("bagel sandwich")
-            // TODO: add counter HERE
-        } else if (selection == "chocolate"){
-            firstOrder.src = "https://images.pngnice.com/download/2007/Hot-Chocolate-PNG-Photo.png"
-            firstOrder.classList.add("pic")
-            order.appendChild(firstOrder)
-            beverageOrder.push("hot chocolate")
-            // TODO: add counter HERE
-        } else if (selection == "tea"){
-            firstOrder.src = "https://www.pngall.com/wp-content/uploads/2016/04/Tea-Transparent.png" 
-            firstOrder.classList.add("pic")
-            order.appendChild(firstOrder)
-            beverageOrder.push("tea")
-            // TODO: add counter HERE
-        }
-    } 
-    console.log("my array", beverageOrder)
+    let children = order.children
+    length = children.length
+    console.log("-------", length)
 
+    if (length <5){
+        if (selection !== ""){
+            const secondOrder = document.createElement('img')
+            if (selection == "bagel"){
+                secondOrder.src = "https://cutewallpaper.org/24/bagel-png/full-bagel-breakfast-and-lunch-menus-nyack-hot-bagels.png"
+                secondOrder.classList.add("pic")
+                order.appendChild(secondOrder)
+                beverageOrder.push("bagel sandwich")
+                // TODO: add counter HERE
+            } else if (selection == "beef"){
+                secondOrder.src = "https://countrystyle.com/wp-content/uploads/2016/11/LUNCH-CIABATTAroastbeef.png"
+                secondOrder.classList.add("pic")
+                order.appendChild(secondOrder)
+                beverageOrder.push("roast beef sandwich")
+                // TODO: add counter HERE
+            } else if (selection == "cheese"){
+                secondOrder.src = "https://freepngimg.com/download/sandwich/159351-grilled-cheese-sandwich-free-png-hq.png" 
+                secondOrder.classList.add("pic")
+                order.appendChild(secondOrder)
+                beverageOrder.push("grilled cheese")
+                // TODO: add counter HERE
+            }
+        } 
+        // add Next button
+        // TODO: update listener on Next button to lead to pop-up
+        let next = document.createElement('button')
+        next.innerHTML = "Next"
+        next.classList.add("next")
+        order.appendChild(next)
+        next.addEventListener("click", dessert)
+    }
+    console.log("my array", beverageOrder)
+        // render food options
+        const item1 = document.getElementById('item-1')
+        item1.innerHTML = "Bagel and Salmon"
+        const bagel = document.createElement('img');
+        bagel.src = 'https://cutewallpaper.org/24/bagel-png/full-bagel-breakfast-and-lunch-menus-nyack-hot-bagels.png'
+        bagel.classList.add("bagel")
+        item1.appendChild(bagel);
+    
+        const item2 = document.getElementById('item-2')
+        item2.innerHTML = "Roast beef sandwich"
+        const beef = document.createElement('img');
+        beef.src = 'https://countrystyle.com/wp-content/uploads/2016/11/LUNCH-CIABATTAroastbeef.png'
+        beef.classList.add("beef")
+        item2.appendChild(beef);
+    
+        const item3 = document.getElementById('item-3')
+        item3.innerHTML = "Grilled cheese"
+        const cheese = document.createElement('img');
+        cheese.src = 'https://freepngimg.com/download/sandwich/159351-grilled-cheese-sandwich-free-png-hq.png'
+        cheese.classList.add("cheese")
+        item3.appendChild(cheese);
 }
 
+
+// update menu to display dessert choices
+function dessert() {
+    menu = document.getElementById('menu-title')
+    menu.innerHTML = "Select your dessert"
+
+    order = document.getElementById('order')
+    let children = order.children
+    children[5].remove()
+
+    // render dessert options
+    const item1 = document.getElementById('item-1')
+    item1.addEventListener("click", addDessert)
+    item1.innerHTML = "Brownie"
+    const brownie = document.createElement('img');
+    brownie.src = 'https://live-aroma-joes-2020.imgix.net/wp-content/uploads/2021/01/Hondurian-Chocolate-Brownie.png?q=85&fit=crop&crop=faces&auto=format'
+    brownie.classList.add("brownie")
+    item1.appendChild(brownie);
+
+    const item2 = document.getElementById('item-2')
+    item2.addEventListener("click", addDessert)
+    item2.innerHTML = "Donut"
+    const donut = document.createElement('img');
+    donut.src = 'https://www.pngplay.com/wp-content/uploads/2/Pink-Donut-PNG-HD-Quality.png'
+    donut.classList.add("donut")
+    item2.appendChild(donut);
+
+    const item3 = document.getElementById('item-3')
+    item3.addEventListener("click", addDessert)
+    item3.innerHTML = "Chocolate cheesecake"
+    const cheesecake = document.createElement('img');
+    cheesecake.src = 'https://images.squarespace-cdn.com/content/v1/538500e4e4b0fa9e95efc7b9/1610646521300-TDYZES3IAN49R4611WRQ/CadillacXTC_Slice2.png?format=1000w'
+    cheesecake.classList.add("cheesecake")
+    item3.appendChild(cheesecake);
+}
+
+// add dessert selection to order section
+function addDessert(e) {
+    selection = e.target.className
+    order = document.getElementById('order')
+    let children = order.children
+    length = children.length
+
+    if (length <6){
+        if (selection !== ""){
+            const thirdOrder = document.createElement('img')
+            if (selection == "brownie"){
+                thirdOrder.src = "https://live-aroma-joes-2020.imgix.net/wp-content/uploads/2021/01/Hondurian-Chocolate-Brownie.png?q=85&fit=crop&crop=faces&auto=format"
+                thirdOrder.classList.add("pic")
+                order.appendChild(thirdOrder)
+                beverageOrder.push("brownie")
+                // TODO: add counter HERE
+            } else if (selection == "donut"){
+                thirdOrder.src = "https://www.pngplay.com/wp-content/uploads/2/Pink-Donut-PNG-HD-Quality.png"
+                thirdOrder.classList.add("pic")
+                order.appendChild(thirdOrder)
+                beverageOrder.push("donut")
+                // TODO: add counter HERE
+            } else if (selection == "cheesecake"){
+                thirdOrder.src = "https://images.squarespace-cdn.com/content/v1/538500e4e4b0fa9e95efc7b9/1610646521300-TDYZES3IAN49R4611WRQ/CadillacXTC_Slice2.png?format=1000w" 
+                thirdOrder.classList.add("pic")
+                order.appendChild(thirdOrder)
+                beverageOrder.push("chocolate cheesecake")
+                // TODO: add counter HERE
+            }
+        } 
+        // add Next button
+        // TODO: update listener on Next button to lead to pop-up
+        let next = document.createElement('button')
+        next.innerHTML = "Next"
+        next.classList.add("next")
+        order.appendChild(next)
+        // next.addEventListener("click", dessert)
+    }
+    
+    console.log("my array", beverageOrder)
+
+    // render dessert options
+    const item1 = document.getElementById('item-1')
+    item1.innerHTML = "Brownie"
+    const brownie = document.createElement('img');
+    brownie.src = 'https://live-aroma-joes-2020.imgix.net/wp-content/uploads/2021/01/Hondurian-Chocolate-Brownie.png?q=85&fit=crop&crop=faces&auto=format'
+    brownie.classList.add("brownie")
+    item1.appendChild(brownie);
+
+    const item2 = document.getElementById('item-2')
+    item2.innerHTML = "Donut"
+    const donut = document.createElement('img');
+    donut.src = 'https://www.pngplay.com/wp-content/uploads/2/Pink-Donut-PNG-HD-Quality.png'
+    donut.classList.add("donut")
+    item2.appendChild(donut);
+
+    const item3 = document.getElementById('item-3')
+    item3.innerHTML = "Chocolate cheesecake"
+    const cheesecake = document.createElement('img');
+    cheesecake.src = 'https://images.squarespace-cdn.com/content/v1/538500e4e4b0fa9e95efc7b9/1610646521300-TDYZES3IAN49R4611WRQ/CadillacXTC_Slice2.png?format=1000w'
+    cheesecake.classList.add("cheesecake")
+    item3.appendChild(cheesecake); 
+}
 
 
 
