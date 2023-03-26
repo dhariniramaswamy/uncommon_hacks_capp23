@@ -307,3 +307,55 @@ h2 {
     color: white;
     padding:0.3em;
 }
+
+
+button {
+    background-color: #47a386;
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px 25px;
+    font-size: 14px;
+}
+
+.modal-container {
+    background-color: white; 
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    min-height: 50vh;
+    /* width: 100vw; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease; */
+}
+
+.modal {
+    background-color: #fff;
+    width: 600px;
+    max-width: 100%;
+    border-radius: 5px;
+    padding: 30px 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.modal h1 {
+    margin: 0;
+    color: black
+}
+
+.modal p {
+    font-size: 14px;
+    opacity: 0.7;
+    color: black;
+}
+
+.hide {
+    pointer-events: auto;
+    opacity: 1;
+    display: none;
+}

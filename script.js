@@ -411,3 +411,30 @@ function enterResultsPage () {
     console.log("Leaving order page, and redirecting to results page.");
     window.location.href = "results.html";
 }
+
+
+
+// NEW CODE FOR POPUP
+// load in data
+fetch("./data/co2_emissions.json")
+.then(response => {
+   return response.json();
+})
+.then(data => console.log(data));
+
+
+const open = document.getElementById("open");
+const modal_container = document.getElementById("modal-container");
+const close = document.getElementById("close");
+
+open.addEventListener("click", () => {
+    modal_container.classList.remove("model-container");
+    modal_container.classList.add("hide");
+});
+
+function closeButton() {
+    console.log("TEST")
+    close.addEventListener("click", () => {
+    modal_container.classList.add("hide");
+});
+}
