@@ -1,6 +1,6 @@
-# uncommon_hacks_capp23
-Uncommon Hacks Group for 2023
+# Uncommon Hacks Hackathon
+In this project, we created a simple front-end protoype for an eco-conscious
+coffeeshop. When users order food and drinks online, they can see the
+environmental impact of their choices. 
 
-# Running Instructions
-Just open "landing.html", and everything should work from there.
-
+To view the prototype, clone this repo and open ```landing.html```.
