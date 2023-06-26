@@ -1,5 +1,5 @@
 # Uncommon Hacks Hackathon
-In this project, we created a simple front-end protoype for an eco-conscious
+For the 2023 Uncommon Hacks Hackathon, we created a simple front-end protoype for an eco-conscious
 coffeeshop. When users order food and drinks online, they can see the
 environmental impact of their choices. 
 
